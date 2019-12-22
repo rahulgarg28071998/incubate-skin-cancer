@@ -39,10 +39,11 @@ def index():
                     "285fbf98-b8ac-4dcf-8f7a-d67358836965", "Iteration2", image_contents.read())
 
                 # Display the results.
+                ls=[]
                 for prediction in results.predictions:
-                    print("\t" + prediction.tag_name +
-                        ": {0:.2f}%".format(prediction.probability * 100))
-            return render_template('index.html')
+                    ls.append({prediction.tag_name :
+                        ": {0:.2f}%".format(prediction.probability * 100)})
+            return render_template('pred.html',t=ls)
 
     return render_template('index.html')
 
